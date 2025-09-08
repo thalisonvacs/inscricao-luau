@@ -30,7 +30,7 @@
       min-height: 100vh;
       padding: 20px;
       /* Imagem de fundo */
-      background-image: url('fundo.png'); /* SUBSTITUA AQUI PELA URL DA SUA IMAGEM */
+      background-image: url('https://i.imgur.com/your-image-url.jpg'); /* SUBSTITUA AQUI PELA URL DA SUA IMAGEM */
       background-size: cover;
       background-position: center;
       background-attachment: fixed; /* Mantém a imagem fixa ao rolar */
@@ -167,7 +167,7 @@
 <body>
   <div class="form-box">
     <h1>Inscrição<br>Luau da Imaculada</h1>
-    <form id="inscricao-form">
+    <form id="inscricao-form" action="https://script.google.com/macros/s/AKfycbwe9yJ0RQzq4XHlAOaCppImecJmqM5g0eKrBRr30Cmtei1wfJAtfCOH3p9sweQy-IVy/exec" method="POST">
       <label>Nome Completo</label>
       <input type="text" name="nome" required>
 
@@ -248,7 +248,6 @@
         <select name="grupo" id="grupo" required>
           <option value="">Selecione...</option>
           <option value="Sim">Sim</option>
-          <option value="Não">Não</option>
         </select>
       </div>
 
@@ -257,7 +256,7 @@
         <select name="imagem" id="imagem" required>
           <option value="">Selecione...</option>
           <option value="Sim">Sim</option>
-          <option value="Não">Não</option>
+    
         </select>
       </div>
 
@@ -342,30 +341,6 @@
             });
         }
     }
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwe9yJ0RQzq4XHlAOaCppImecJmqM5g0eKrBRr30Cmtei1wfJAtfCOH3p9sweQy-IVy/exec";
-    const form = document.getElementById("inscricao-form");
-
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      fetch(scriptURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(() => {
-        alert("Inscrição enviada com sucesso!");
-        form.reset();
-        document.getElementById("paroquia").innerHTML = '<option value="">Selecione sua paróquia</option>';
-        document.getElementById("grupo").selectedIndex = 0;
-        document.getElementById("imagem").selectedIndex = 0;
-      })
-      .catch(err => alert("Erro ao enviar: " + err.message));
-    });
   </script>
 </body>
 </html>
-
